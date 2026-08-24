@@ -59,6 +59,7 @@ def create_schema(conn):
 def load_data(conn, csv_path):
     df = pd.read_csv(csv_path)
 
+    # AI AUTO-GEN START: check me TODO
     # ---- subjects table ----
     # One row per unique subject_id. drop_duplicates keeps the first
     # occurrence, which is fine since these fields don't vary per subject.
@@ -76,6 +77,7 @@ def load_data(conn, csv_path):
         .rename(columns={"sample": "sample_id", "subject": "subject_id"})
     )
     samples_df.to_sql("samples", conn, if_exists="append", index=False)
+    # AI AUTO-GEN END: check me TODO
 
 # need this to run the script from the command line, otherwise nothing happens
 if __name__ == "__main__":
