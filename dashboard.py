@@ -1,9 +1,11 @@
 # this file is AI generated
 import os
+import shutil
 import analysis
  
 DB_PATH = "cell_count.db"
 OUTPUT_DIR = "output"
+DOCS_DIR = "docs"  # GitHub Pages can only serve from root or /docs
  
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -138,7 +140,15 @@ def main():
  
     print(f"Dashboard written to {OUTPUT_DIR}/index.html")
  
+    # ---- also copy everything into docs/, for GitHub Pages ----
+    # GitHub Pages can only serve from the repo root or a /docs folder,
+    # so we mirror the output/ folder there automatically on every run.
+    if os.path.exists(DOCS_DIR):
+        shutil.rmtree(DOCS_DIR)
+    shutil.copytree(OUTPUT_DIR, DOCS_DIR)
+ 
+    print(f"Dashboard also copied to {DOCS_DIR}/ for GitHub Pages")
+ 
  
 if __name__ == "__main__":
     main()
- 
