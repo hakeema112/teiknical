@@ -123,17 +123,81 @@ def boxplot(filtered, save_path="responder_boxplot.png"):
     return fig
 
 # Part 4:
+def baseline(DB_PATH):
+    conn = sqlite3.connect(DB_PATH)
+ 
+    df = pd.read_sql_query("""
+        SELECT
+            samples.sample_id AS sample,
+            samples.sample_type,
+            samples.time_from_treatment_start,
+            subjects.subject_id,
+            subjects.project,
+            subjects.condition,
+            subjects.sex,
+            subjects.treatment,
+            subjects.response
+        FROM samples
+        JOIN subjects ON samples.subject_id = subjects.subject_id
+        WHERE subjects.condition = 'melanoma'
+          AND subjects.treatment = 'miraclib'
+          AND samples.sample_type = 'PBMC'
+          AND samples.time_from_treatment_start = 0
+    """, conn)
+ 
+    conn.close()
+    return df
 
+def summary(DB_PATH):
+    # need to return:
+        # samples per project
+        # responders per subject
+        # sex per subject
+
+    df = baseline(DB_PATH)
+    samples_per_project = (
+        df.groupby("project")["sample"]
+        .count()
+        .reset_index(name="n_samples")
+    )
+
+    # AI auto-generated code below
+    unique_subjects = df.drop_duplicates(subset=["subject_id"])
+ 
+    responders_per_subject = (
+        unique_subjects.groupby("response")["subject_id"]
+        .count()
+        .reset_index(name="n_subjects")
+    )
+ 
+    sex_per_subject = (
+        unique_subjects.groupby("sex")["subject_id"]
+        .count()
+        .reset_index(name="n_subjects")
+    )
+ 
+    return samples_per_project, responders_per_subject, sex_per_subject
 
 # testing:
 if __name__ == "__main__": # sanity check: DELETEME
+    # for part two
     # table = frequency_table(DB_PATH)
     # print(table.head(15))
     # print(f"\nTotal rows: {len(table)}")
 
-    print("\n--- Part 3: Responders vs Non-Responders (melanoma, miraclib, PBMC) ---")
-    filtered, results = compare(DB_PATH)
-    print(results)
+    # for part three
+    # print("\n--- Part 3: Responders vs Non-Responders (melanoma, miraclib, PBMC) ---")
+    # filtered, results = compare(DB_PATH)
+    # print(results)
+    # boxplot(filtered)
+    # print("\nBoxplot saved to responder_boxplot.png")
 
-    boxplot(filtered)
-    print("\nBoxplot saved to responder_boxplot.png")
+    # for part four
+    print("\n--- Part 4: Baseline melanoma + miraclib + PBMC subset ---")
+    samples_per_project, responders_per_subject, sex_per_subject = summary(DB_PATH)
+    print("\nSamples per project:")
+    print(samples_per_project)
+    print("\nResponders vs non-responders (unique subjects):")
+    print(responders_per_subject)
+    print("\nSex breakdown (unique subjects):")
+    print(sex_per_subject)

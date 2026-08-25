@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Loblaw Bio - Immune Cell Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f7f7f9;
+            color: #222;
+        }
+        h1 { margin-bottom: 0; }
+        .subtitle { color: #666; margin-top: 4px; }
+        section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+        th { background-color: #eee; }
+        .note { color: #666; font-size: 13px; margin-top: 8px; }
+        img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; margin-top: 12px; }
+        .significant { color: #1a7a1a; font-weight: bold; }
+        .not-significant { color: #999; }
+    </style>
+</head>
+<body>
+    <h1>Immune Cell Population Dashboard</h1>
+    <p class="subtitle">Cell count analysis for Bob Loblaw's clinical trial (miraclib, melanoma)</p>
+ 
+    <section>
+        <h2>Part 2: Cell Population Frequency by Sample</h2>
+        <p>Relative frequency of each immune cell population within each sample.</p>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>sample</th>
+      <th>total_count</th>
+      <th>population</th>
+      <th>count</th>
+      <th>percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sample00000</td>
+      <td>93214</td>
+      <td>b_cell</td>
+      <td>10908</td>
+      <td>11.702105</td>
+    </tr>
+    <tr>
+      <td>sample00001</td>
+      <td>100824</td>
+      <td>b_cell</td>
+      <td>6777</td>
+      <td>6.721614</td>
+    </tr>
+    <tr>
+      <td>sample00002</td>
+      <td>92822</td>
+      <td>b_cell</td>
+      <td>9794</td>
+      <td>10.551378</td>
+    </tr>
+    <tr>
+      <td>sample00003</td>
+      <td>93160</td>
+      <td>b_cell</td>
+      <td>10081</td>
+      <td>10.821168</td>
+    </tr>
+    <tr>
+      <td>sample00004</td>
+      <td>107903</td>
+      <td>b_cell</td>
+      <td>4372</td>
+      <td>4.051787</td>
+    </tr>
+    <tr>
+      <td>sample00005</td>
+      <td>105359</td>
+      <td>b_cell</td>
+      <td>15431</td>
+      <td>14.646115</td>
+    </tr>
+    <tr>
+      <td>sample00006</td>
+      <td>99774</td>
+      <td>b_cell</td>
+      <td>5897</td>
+      <td>5.910357</td>
+    </tr>
+    <tr>
+      <td>sample00007</td>
+      <td>98424</td>
+      <td>b_cell</td>
+      <td>10403</td>
+      <td>10.569577</td>
+    </tr>
+    <tr>
+      <td>sample00008</td>
+      <td>90353</td>
+      <td>b_cell</td>
+      <td>8829</td>
+      <td>9.771673</td>
+    </tr>
+    <tr>
+      <td>sample00009</td>
+      <td>95821</td>
+      <td>b_cell</td>
+      <td>7650</td>
+      <td>7.983636</td>
+    </tr>
+    <tr>
+      <td>sample00010</td>
+      <td>107537</td>
+      <td>b_cell</td>
+      <td>13203</td>
+      <td>12.277635</td>
+    </tr>
+    <tr>
+      <td>sample00011</td>
+      <td>89815</td>
+      <td>b_cell</td>
+      <td>10621</td>
+      <td>11.825419</td>
+    </tr>
+    <tr>
+      <td>sample00012</td>
+      <td>109579</td>
+      <td>b_cell</td>
+      <td>14128</td>
+      <td>12.892981</td>
+    </tr>
+    <tr>
+      <td>sample00013</td>
+      <td>109488</td>
+      <td>b_cell</td>
+      <td>10681</td>
+      <td>9.755407</td>
+    </tr>
+    <tr>
+      <td>sample00014</td>
+      <td>92904</td>
+      <td>b_cell</td>
+      <td>6113</td>
+      <td>6.579910</td>
+    </tr>
+    <tr>
+      <td>sample00015</td>
+      <td>102691</td>
+      <td>b_cell</td>
+      <td>8261</td>
+      <td>8.044522</td>
+    </tr>
+    <tr>
+      <td>sample00016</td>
+      <td>95824</td>
+      <td>b_cell</td>
+      <td>7433</td>
+      <td>7.756929</td>
+    </tr>
+    <tr>
+      <td>sample00017</td>
+      <td>98639</td>
+      <td>b_cell</td>
+      <td>3226</td>
+      <td>3.270512</td>
+    </tr>
+    <tr>
+      <td>sample00018</td>
+      <td>101123</td>
+      <td>b_cell</td>
+      <td>3578</td>
+      <td>3.538265</td>
+    </tr>
+    <tr>
+      <td>sample00019</td>
+      <td>97405</td>
+      <td>b_cell</td>
+      <td>8022</td>
+      <td>8.235717</td>
+    </tr>
+    <tr>
+      <td>sample00020</td>
+      <td>97228</td>
+      <td>b_cell</td>
+      <td>6382</td>
+      <td>6.563953</td>
+    </tr>
+    <tr>
+      <td>sample00021</td>
+      <td>100750</td>
+      <td>b_cell</td>
+      <td>10337</td>
+      <td>10.260050</td>
+    </tr>
+    <tr>
+      <td>sample00022</td>
+      <td>92670</td>
+      <td>b_cell</td>
+      <td>9563</td>
+      <td>10.319413</td>
+    </tr>
+    <tr>
+      <td>sample00023</td>
+      <td>104960</td>
+      <td>b_cell</td>
+      <td>6924</td>
+      <td>6.596799</td>
+    </tr>
+    <tr>
+      <td>sample00024</td>
+      <td>99969</td>
+      <td>b_cell</td>
+      <td>7552</td>
+      <td>7.554342</td>
+    </tr>
+    <tr>
+      <td>sample00025</td>
+      <td>95534</td>
+      <td>b_cell</td>
+      <td>11714</td>
+      <td>12.261603</td>
+    </tr>
+    <tr>
+      <td>sample00026</td>
+      <td>95777</td>
+      <td>b_cell</td>
+      <td>7936</td>
+      <td>8.285914</td>
+    </tr>
+    <tr>
+      <td>sample00027</td>
+      <td>93164</td>
+      <td>b_cell</td>
+      <td>8850</td>
+      <td>9.499377</td>
+    </tr>
+    <tr>
+      <td>sample00028</td>
+      <td>106062</td>
+      <td>b_cell</td>
+      <td>11386</td>
+      <td>10.735230</td>
+    </tr>
+    <tr>
+      <td>sample00029</td>
+      <td>97156</td>
+      <td>b_cell</td>
+      <td>5606</td>
+      <td>5.770102</td>
+    </tr>
+    <tr>
+      <td>sample00030</td>
+      <td>93972</td>
+      <td>b_cell</td>
+      <td>6413</td>
+      <td>6.824373</td>
+    </tr>
+    <tr>
+      <td>sample00031</td>
+      <td>106625</td>
+      <td>b_cell</td>
+      <td>7007</td>
+      <td>6.571630</td>
+    </tr>
+    <tr>
+      <td>sample00032</td>
+      <td>101357</td>
+      <td>b_cell</td>
+      <td>11118</td>
+      <td>10.969149</td>
+    </tr>
+    <tr>
+      <td>sample00033</td>
+      <td>93131</td>
+      <td>b_cell</td>
+      <td>9054</td>
+      <td>9.721790</td>
+    </tr>
+    <tr>
+      <td>sample00034</td>
+      <td>103870</td>
+      <td>b_cell</td>
+      <td>8350</td>
+      <td>8.038895</td>
+    </tr>
+    <tr>
+      <td>sample00035</td>
+      <td>94622</td>
+      <td>b_cell</td>
+      <td>5327</td>
+      <td>5.629769</td>
+    </tr>
+    <tr>
+      <td>sample00036</td>
+      <td>103532</td>
+      <td>b_cell</td>
+      <td>8635</td>
+      <td>8.340416</td>
+    </tr>
+    <tr>
+      <td>sample00037</td>
+      <td>92368</td>
+      <td>b_cell</td>
+      <td>8915</td>
+      <td>9.651611</td>
+    </tr>
+    <tr>
+      <td>sample00038</td>
+      <td>98897</td>
+      <td>b_cell</td>
+      <td>12062</td>
+      <td>12.196528</td>
+    </tr>
+    <tr>
+      <td>sample00039</td>
+      <td>107756</td>
+      <td>b_cell</td>
+      <td>14634</td>
+      <td>13.580682</td>
+    </tr>
+    <tr>
+      <td>sample00040</td>
+      <td>105943</td>
+      <td>b_cell</td>
+      <td>11007</td>
+      <td>10.389549</td>
+    </tr>
+    <tr>
+      <td>sample00041</td>
+      <td>91358</td>
+      <td>b_cell</td>
+      <td>11583</td>
+      <td>12.678693</td>
+    </tr>
+    <tr>
+      <td>sample00042</td>
+      <td>111631</td>
+      <td>b_cell</td>
+      <td>12118</td>
+      <td>10.855408</td>
+    </tr>
+    <tr>
+      <td>sample00043</td>
+      <td>104827</td>
+      <td>b_cell</td>
+      <td>4750</td>
+      <td>4.531275</td>
+    </tr>
+    <tr>
+      <td>sample00044</td>
+      <td>106034</td>
+      <td>b_cell</td>
+      <td>15793</td>
+      <td>14.894279</td>
+    </tr>
+    <tr>
+      <td>sample00045</td>
+      <td>104473</td>
+      <td>b_cell</td>
+      <td>13792</td>
+      <td>13.201497</td>
+    </tr>
+    <tr>
+      <td>sample00046</td>
+      <td>105731</td>
+      <td>b_cell</td>
+      <td>7726</td>
+      <td>7.307223</td>
+    </tr>
+    <tr>
+      <td>sample00047</td>
+      <td>93338</td>
+      <td>b_cell</td>
+      <td>8249</td>
+      <td>8.837772</td>
+    </tr>
+    <tr>
+      <td>sample00048</td>
+      <td>105178</td>
+      <td>b_cell</td>
+      <td>13648</td>
+      <td>12.976098</td>
+    </tr>
+    <tr>
+      <td>sample00049</td>
+      <td>104513</td>
+      <td>b_cell</td>
+      <td>11419</td>
+      <td>10.925914</td>
+    </tr>
+  </tbody>
+</table>
+        <p class="note">Showing first 50 of 52500 rows. Full table: <a href="frequency_table.csv">frequency_table.csv</a></p>
+    </section>
+ 
+    <section>
+        <h2>Part 3: Responders vs Non-Responders</h2>
+        <p>Melanoma patients treated with miraclib (PBMC samples only), comparing relative
+        cell population frequencies between responders and non-responders.</p>
+        <h3>Statistical results (Mann-Whitney U test, Bonferroni-corrected)</h3>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>population</th>
+      <th>n_responders</th>
+      <th>n_non_responders</th>
+      <th>u_statistic</th>
+      <th>p_value</th>
+      <th>p_value_bonferroni</th>
+      <th>significant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>b_cell</td>
+      <td>993</td>
+      <td>975</td>
+      <td>459971.0</td>
+      <td>0.055702</td>
+      <td>0.278512</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>cd8_t_cell</td>
+      <td>993</td>
+      <td>975</td>
+      <td>478176.0</td>
+      <td>0.639086</td>
+      <td>1.000000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>cd4_t_cell</td>
+      <td>993</td>
+      <td>975</td>
+      <td>515276.0</td>
+      <td>0.013344</td>
+      <td>0.066721</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>nk_cell</td>
+      <td>993</td>
+      <td>975</td>
+      <td>464546.0</td>
+      <td>0.121051</td>
+      <td>0.605254</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>monocyte</td>
+      <td>993</td>
+      <td>975</td>
+      <td>466510.0</td>
+      <td>0.163150</td>
+      <td>0.815751</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+        <p class="not-significant">No population reached statistical significance after Bonferroni correction in this cohort.</p>
+        <h3>Boxplot</h3>
+        <img src="responder_boxplot.png" alt="Responder vs non-responder boxplot">
+    </section>
+ 
+    <section>
+        <h2>Part 4: Baseline Melanoma + Miraclib + PBMC Subset</h2>
+        <p>Samples taken at baseline (time_from_treatment_start = 0) from melanoma
+        patients treated with miraclib.</p>
+ 
+        <h3>Samples per project</h3>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>project</th>
+      <th>n_samples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>prj1</td>
+      <td>384</td>
+    </tr>
+    <tr>
+      <td>prj3</td>
+      <td>272</td>
+    </tr>
+  </tbody>
+</table>
+ 
+        <h3>Responders vs non-responders (unique subjects)</h3>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>response</th>
+      <th>n_subjects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>no</td>
+      <td>325</td>
+    </tr>
+    <tr>
+      <td>yes</td>
+      <td>331</td>
+    </tr>
+  </tbody>
+</table>
+ 
+        <h3>Sex breakdown (unique subjects)</h3>
+        <table border="1" class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>sex</th>
+      <th>n_subjects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F</td>
+      <td>312</td>
+    </tr>
+    <tr>
+      <td>M</td>
+      <td>344</td>
+    </tr>
+  </tbody>
+</table>
+    </section>
+</body>
+</html>
