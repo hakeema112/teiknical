@@ -1,11 +1,9 @@
-# teiknical
-
 # Loblaw Bio - Immune Cell Population Analysis
 
 Analysis pipeline and dashboard for Bob Loblaw's clinical trial data, examining
 how immune cell populations relate to treatment response.
 
-**Dashboard:** [TODO: add GitHub Pages link here]
+**Dashboard:** https://hakeema112.github.io/teiknical/
 
 ## How to Run
 
